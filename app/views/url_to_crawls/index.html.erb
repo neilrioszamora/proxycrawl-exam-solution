@@ -1,0 +1,31 @@
+<%= form_for @url_to_crawl do |f| %>
+  <div class="input-group mt-4">
+    <%= f.text_field :url, placeholder: 'Enter Amazon SERP Url', class: 'form-control' %>
+    <div class="input-group-append">
+      <%= f.submit 'Add', class: 'btn btn-outline-secondary' %>
+    </div>
+  </div>
+<% end %>
+
+<% if @url_to_crawls.present? %>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @url_to_crawls.each do |url_to_crawl| %>
+        <tr>
+          <td><%= url_to_crawl.url %></td>
+          <td><%= url_to_crawl.status.humanize %></td>
+          <td><%= url_to_crawl.created_at.strftime('%F %r') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-center mt-3">No urls to crawl yet.</p>
+<% end %>
