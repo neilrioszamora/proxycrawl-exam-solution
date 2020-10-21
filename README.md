@@ -2,9 +2,15 @@
 
 This app uses MySql database and 
 
-- please check `$ EDITOR=nano rails credentials:edit`
+- please check `RAILS_ROOT$ EDITOR=nano rails credentials:show`
 - run the migration
 - start the server
+
+## SCHEDULE JOB
+
+- scheduling for job uses whenever gem
+- run `RAILS_ROOT$ whenever --update-crontab` to schedule the job
+- or you can run `UrlToCrawlProcessorJob.perform_later` in the rails console to run it manually
 
 ## Testing the API
 
