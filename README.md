@@ -1,24 +1,51 @@
-# README
+# Neil R. Zamora's Proxy Crawl Test Solution
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app uses MySql database and 
 
-Things you may want to cover:
+- please check `$ EDITOR=nano rails credentials:edit`
+- run the migration
+- start the server
 
-* Ruby version
+## Testing the API
 
-* System dependencies
+### READ all
 
-* Configuration
+```
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:3000/amazon_products
+```
 
-* Database creation
+### READ specific product
 
-* Database initialization
+```
+curl --header "Content-Type: application/json" \
+  --request GET \
+  http://localhost:3000/amazon_products/:id
+```
 
-* How to run the test suite
+### CREATE
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"url":"my_url","title":"my_title"},"price":"my_price","description":"my_description","image_url":"my_image_url"' \
+  http://localhost:3000/amazon_products
+```
 
-* Deployment instructions
+### UPDATE
 
-* ...
+```
+curl --header "Content-Type: application/json" \
+  --request PATCH \
+  --data '{"url":"my_url","title":"my_title"},"price":"my_price","description":"my_description","image_url":"my_image_url"' \
+  http://localhost:3000/amazon_products/:id
+```
+
+### DELETE
+
+```
+curl --header "Content-Type: application/json" \
+  --request DELETE \
+  http://localhost:3000/amazon_products/:id
+```

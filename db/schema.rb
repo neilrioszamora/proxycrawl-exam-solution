@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_182832) do
+ActiveRecord::Schema.define(version: 2020_10_20_195941) do
+
+  create_table "amazon_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "url_to_crawl_id"
+    t.string "url"
+    t.string "title"
+    t.string "price"
+    t.text "description"
+    t.text "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "url_to_crawls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "url"
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "response_status_code"
+    t.string "response_original_status"
+    t.string "response_pc_status"
+    t.datetime "last_crawled_at"
+    t.text "last_crawl_error_message"
+    t.text "last_crawl_error_backtrace"
+    t.datetime "last_crawl_errored_at"
   end
 
 end
